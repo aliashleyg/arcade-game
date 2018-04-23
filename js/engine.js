@@ -107,12 +107,37 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/slices/images/__01.jpg',
+                'images/slices/images/__02.gif',
+                'images/slices/images/__03.gif',
+                'images/slices/images/__04.gif',
+                'images/slices/images/__05.gif',
+                'images/slices/images/__06.gif',
+                'images/slices/images/__07.gif',
+                'images/slices/images/__08.gif',
+                'images/slices/images/__09.gif',
+                'images/slices/images/__10.gif',
+                'images/slices/images/__11.gif',
+                'images/slices/images/__12.gif',
+                'images/slices/images/__13.gif',
+                'images/slices/images/__14.gif',
+                'images/slices/images/__15.gif',
+                'images/slices/images/__16.gif',
+                'images/slices/images/__17.gif',
+                'images/slices/images/__18.gif',
+                'images/slices/images/__19.gif',
+                'images/slices/images/__20.gif',
+                'images/slices/images/__21.gif',
+                'images/slices/images/__22.gif',
+                'images/slices/images/__23.png',
+                'images/slices/images/__24.gif',
+                'images/slices/images/__25.gif',
+                'images/slices/images/__26.gif',
+                'images/slices/images/__27.gif',
+                'images/slices/images/__28.gif',
+                'images/slices/images/__29.gif',
+                'images/slices/images/__30.gif'
+
             ],
             numRows = 6,
             numCols = 5,
@@ -134,7 +159,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 101);
             }
         }
 
@@ -169,12 +194,44 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
+        'images/slices/images/__01.jpg',
+        'images/slices/images/__02.gif',
+        'images/slices/images/__03.gif',
+        'images/slices/images/__04.gif',
+        'images/slices/images/__05.gif',
+        'images/slices/images/__06.gif',
+        'images/slices/images/__07.gif',
+        'images/slices/images/__08.gif',
+        'images/slices/images/__09.gif',
+        'images/slices/images/__10.gif',
+        'images/slices/images/__11.gif',
+        'images/slices/images/__12.gif',
+        'images/slices/images/__13.gif',
+        'images/slices/images/__14.gif',
+        'images/slices/images/__15.gif',
+        'images/slices/images/__16.gif',
+        'images/slices/images/__17.gif',
+        'images/slices/images/__18.gif',
+        'images/slices/images/__19.gif',
+        'images/slices/images/__20.gif',
+        'images/slices/images/__21.gif',
+        'images/slices/images/__22.gif',
+        'images/slices/images/__23.png',
+        'images/slices/images/__24.gif',
+        'images/slices/images/__25.gif',
+        'images/slices/images/__26.gif',
+        'images/slices/images/__27.gif',
+        'images/slices/images/__28.gif',
+        'images/slices/images/__29.gif',
+        'images/slices/images/__30.gif',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/char-pink-girl.png'
+        'images/char-pink-girl.png',
+        'images/shark.png',
+        'images/narwhal.png',
+        'images/anglerfish.png',
+        'images/girl.png',
+        'images/boy.png'
     ]);
     Resources.onReady(init);
 

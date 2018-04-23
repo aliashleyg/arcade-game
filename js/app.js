@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(latitude) {
+var Enemy = function(latitude, src, speedInterval) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -10,15 +10,15 @@ var Enemy = function(latitude) {
 
     //1. set a width and height that is allowable for the bug to move in (three defined rows)
     //2. set a random speed for each bug, but make sure that they are all in separate rows. 
-    this.speed = Math.round(Math.random() * (800 - 500)) + 500;
+    this.speed = Math.round(Math.random() * speedInterval) + 500;
     this.x;
     this.y = latitude; //function here to set math.random speed;
-    this.sprite = 'images/enemy-bug.png';
+    this.sprite = src;
 };
 
-var bugOne = new Enemy(60);
-var bugTwo = new Enemy(142);
-var bugThree = new Enemy(224);
+var bugOne = new Enemy(142,'images/shark.png', (600 - 500));
+var bugTwo = new Enemy(224, 'images/narwhal.png', (650 - 500));
+var bugThree = new Enemy(310, 'images/anglerfish.png', (625 - 500));
 
 
 // Update the enemy's position, required method for game
