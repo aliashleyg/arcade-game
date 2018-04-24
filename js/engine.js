@@ -106,38 +106,44 @@ var Engine = (function(global) {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
-        var rowImages = [
+        var bgImages = [
+                [
                 'images/slices/images/__01.jpg',
                 'images/slices/images/__02.gif',
                 'images/slices/images/__03.gif',
                 'images/slices/images/__04.gif',
-                'images/slices/images/__05.gif',
+                'images/slices/images/__05.gif'
+                ], [
                 'images/slices/images/__06.gif',
                 'images/slices/images/__07.gif',
                 'images/slices/images/__08.gif',
                 'images/slices/images/__09.gif',
-                'images/slices/images/__10.gif',
+                'images/slices/images/__10.gif'
+                ], [
                 'images/slices/images/__11.gif',
                 'images/slices/images/__12.gif',
                 'images/slices/images/__13.gif',
                 'images/slices/images/__14.gif',
-                'images/slices/images/__15.gif',
+                'images/slices/images/__15.gif'
+                ], [
                 'images/slices/images/__16.gif',
                 'images/slices/images/__17.gif',
                 'images/slices/images/__18.gif',
                 'images/slices/images/__19.gif',
-                'images/slices/images/__20.gif',
+                'images/slices/images/__20.gif'
+                ], [
                 'images/slices/images/__21.gif',
                 'images/slices/images/__22.gif',
                 'images/slices/images/__23.png',
                 'images/slices/images/__24.gif',
-                'images/slices/images/__25.gif',
+                'images/slices/images/__25.gif'
+                ], [
                 'images/slices/images/__26.gif',
                 'images/slices/images/__27.gif',
                 'images/slices/images/__28.gif',
                 'images/slices/images/__29.gif',
                 'images/slices/images/__30.gif'
-
+                ]
             ],
             numRows = 6,
             numCols = 5,
@@ -147,9 +153,10 @@ var Engine = (function(global) {
         ctx.clearRect(0,0,canvas.width,canvas.height)
 
         /* Loop through the number of rows and columns we've defined above
-         * and, using the rowImages array, draw the correct image for that
+         * and, using the bgImages array, draw the correct image for that
          * portion of the "grid"
          */
+
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
                 /* The drawImage function of the canvas' context element
@@ -159,7 +166,7 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 101);
+                ctx.drawImage(Resources.get(bgImages[row][col]), col * 101, row * 101);
             }
         }
 
@@ -224,9 +231,6 @@ var Engine = (function(global) {
         'images/slices/images/__28.gif',
         'images/slices/images/__29.gif',
         'images/slices/images/__30.gif',
-        'images/enemy-bug.png',
-        'images/char-boy.png',
-        'images/char-pink-girl.png',
         'images/shark.png',
         'images/narwhal.png',
         'images/anglerfish.png',
