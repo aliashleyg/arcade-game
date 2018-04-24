@@ -16,9 +16,9 @@ var Enemy = function(latitude, src, speedInterval) {
     this.sprite = src;
 };
 
-var bugOne = new Enemy(142,'images/shark.png', (600 - 500));
-var bugTwo = new Enemy(224, 'images/narwhal.png', (650 - 500));
-var bugThree = new Enemy(310, 'images/anglerfish.png', (625 - 500));
+var enemyOne = new Enemy(60,'images/shark.png', (600 - 500));
+var enemyTwo = new Enemy(142, 'images/narwhal.png', (650 - 500));
+var enemyThree = new Enemy(224, 'images/anglerfish.png', (625 - 500));
 
 
 // Update the enemy's position, required method for game
@@ -36,7 +36,7 @@ Enemy.prototype.update = function(dt) {
         player.y < this.y + 65 &&
         player.y + 50 > this.y) {
         player.x = 0;
-        player.y = 405;
+        player.y = 450;
         tallyScore();
     }
 };
@@ -59,21 +59,22 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.sprite = 'images/char-pink-girl.png';
+    this.sprite = 'images/girl.png';
     this.x = 0;
-    this.y = 405;
+    this.y = 450;
 };
 
 Player.prototype.update = function(dt) {
     /*FOR MY VERSION*/
-    // if(this.x > 380 && this.y < 60) {
-    //     this.x = 0;
-    //     this.y = 405;
-    // }
-    if (this.y < 60) {
+    if(this.x > 380 && this.y < 60) {
         this.x = 0;
         this.y = 405;
     }
+    /*FOR BUG VERSION */
+    // if (this.y < 60) {
+    //     this.x = 0;
+    //     this.y = 405;
+    // }
 };
 
 Player.prototype.render = function() {
@@ -82,7 +83,7 @@ Player.prototype.render = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let allEnemies = [bugOne, bugTwo, bugThree];
+let allEnemies = [enemyOne, enemyTwo, enemyThree];
 let player = new Player;
 
 // This listens for key presses and sends the keys to your
@@ -108,11 +109,11 @@ Player.prototype.handleInput = function(key) {
     }
 
     if (key == 'up' && this.y > 60) {
-        this.y = this.y - 83;
+        this.y = this.y - 100;
     }
 
     if (key == 'down' && this.y < 405) {
-        this.y = this.y + 83;
+        this.y = this.y + 100;
     }
    
 }
