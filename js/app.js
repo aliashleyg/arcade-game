@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(latitude, src, speedInterval) {
+var Enemy = function(latitude, src, speedInterval, len) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -14,31 +14,41 @@ var Enemy = function(latitude, src, speedInterval) {
     this.x;
     this.y = latitude; //function here to set math.random speed;
     this.sprite = src;
+    this.length = len;
 };
 
-var enemyOne = new Enemy(60,'images/shark.png', (600 - 500));
-var enemyTwo = new Enemy(142, 'images/narwhal.png', (650 - 500));
-var enemyThree = new Enemy(224, 'images/anglerfish.png', (625 - 500));
+var enemyOne = new Enemy(60,'images/shark.png', (600 - 500), 161);
+var enemyTwo = new Enemy(142, 'images/narwhal.png', (650 - 500), 237);
+var enemyThree = new Enemy(224, 'images/anglerfish.png', (625 - 500), 76);
 
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     if (this.x < 600) {
-        this.x = this.x + this.speed *dt;
+        this.x = this.x + this.speed * dt;
 
     } else {
         this.x = -120;
     }   
 
-    if (player.x < this.x + 50 &&
-        player.x + 50 > this.x &&
+    if (player.x < this.x + this.length &&
+        player.x + 100 > this.x &&
         player.y < this.y + 65 &&
-        player.y + 50 > this.y) {
+        player.y + 65 > this.y) {
         player.x = 0;
         player.y = 450;
         tallyScore();
     }
+
+// if (player.x < this.x + this.len &&
+//     player.x + 84 > this.x &&
+//     player.y < this.y + this.height &&
+//     101 + player.y > this.y) {
+//     player.x = 0;
+//     player.y = 450;
+// }
+
 };
 
 let score = 0;
@@ -68,7 +78,7 @@ Player.prototype.update = function(dt) {
     /*FOR MY VERSION*/
     if(this.x > 380 && this.y < 60) {
         this.x = 0;
-        this.y = 405;
+        this.y = 450;
     }
     /*FOR BUG VERSION */
     // if (this.y < 60) {
@@ -117,3 +127,22 @@ Player.prototype.handleInput = function(key) {
     }
    
 }
+
+
+// var Boat = function(latitude, src, speedInterval, len) {
+//     // Variables applied to each of our instances go here,
+//     // we've provided one for you to get started
+
+//     // The image/sprite for our enemies, this uses
+//     // a helper we've provided to easily load images
+    
+//     //TODOS:
+
+//     //1. set a width and height that is allowable for the bug to move in (three defined rows)
+//     //2. set a random speed for each bug, but make sure that they are all in separate rows. 
+//     this.speed = Math.round(Math.random() * speedInterval) + 500;
+//     this.x;
+//     this.y = latitude; //function here to set math.random speed;
+//     this.sprite = src;
+//     this.length = len;
+// };
