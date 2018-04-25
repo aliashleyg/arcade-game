@@ -1,3 +1,7 @@
+//sound effects
+var snack = new Audio('sounds/bite.wav');
+var reachedBoat = new Audio('sounds/bell.wav');
+
 // Enemies our player must avoid
 var Enemy = function(latitude, src, speedInterval, len) {
     // Variables applied to each of our instances go here,
@@ -17,9 +21,9 @@ var Enemy = function(latitude, src, speedInterval, len) {
     this.length = len;
 };
 
-var enemyOne = new Enemy(80,'images/shark.png', (600 - 500), 161);
-var enemyTwo = new Enemy(162, 'images/narwhal.png', (650 - 500), 237);
-var enemyThree = new Enemy(244, 'images/anglerfish.png', (625 - 500), 76);
+var enemyOne = new Enemy(90,'images/shark.png', (-600 - 500), 161);
+var enemyTwo = new Enemy(182, 'images/narwhal.png', (-650 - 500), 237);
+var enemyThree = new Enemy(264, 'images/anglerfish.png', (-625 - 500), 76);
 
 
 // Update the enemy's position, required method for game
@@ -38,6 +42,7 @@ Enemy.prototype.update = function(dt) {
         player.y + 65 > this.y) {
         player.x = 200;
         player.y = 470;
+        snack.play();
         enemyScore();
     }
 
@@ -63,11 +68,15 @@ var Player = function() {
     this.y = 485;
 };
 
+//player touches boat; gets a point
 Player.prototype.update = function(dt) {
-       if (this.y < 80 && this.x > 300) {
+       if (this.x >= 300 && this.y < 0) {
+
         this.x = 200;
         this.y = 485;
+        reachedBoat.play();
         diverScore();
+
     }
 };
 
@@ -108,12 +117,12 @@ Player.prototype.handleInput = function(key) {
         this.x = this.x + 100;
     }
 
-    if (key == 'up' && this.y > 80) {
-        this.y = this.y - 100;
+    if (key == 'up' && this.y > 0) {
+        this.y = this.y - 98;
     }
 
     if (key == 'down' && this.y < 405) {
-        this.y = this.y + 100;
+        this.y = this.y + 98;
     }
    
 }
