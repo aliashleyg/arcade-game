@@ -23,7 +23,7 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime;
-    
+
     canvas.width = 505;
     canvas.height = 606;
     doc.body.appendChild(canvas);
@@ -245,3 +245,17 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
 })(this);
+
+//function to append score tally below canvas
+var scoreCard = document.createElement('div');
+scoreCard.id ='scoreTracker';
+document.body.appendChild(scoreCard);
+var diverCount = document.createElement('p');
+scoreCard.appendChild(diverCount);
+diverCount.innerHTML = "Diver: " + boatTouch;
+var scoreText = document.createElement('p');
+scoreTracker.appendChild(scoreText)
+scoreText.innerHTML = "Sea Animals: " + score;
+
+
+

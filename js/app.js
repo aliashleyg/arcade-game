@@ -21,9 +21,9 @@ var Enemy = function(latitude, src, speedInterval, len) {
     this.length = len;
 };
 
-var enemyOne = new Enemy(90,'images/shark.png', (-600 - 500), 161);
-var enemyTwo = new Enemy(182, 'images/narwhal.png', (-650 - 500), 237);
-var enemyThree = new Enemy(264, 'images/anglerfish.png', (-625 - 500), 76);
+var enemyOne = new Enemy(70,'images/shark.png', (600 - 500), 161);
+var enemyTwo = new Enemy(162, 'images/narwhal.png', (650 - 500), 237);
+var enemyThree = new Enemy(244, 'images/anglerfish.png', (625 - 500), 76);
 
 
 // Update the enemy's position, required method for game
@@ -52,7 +52,8 @@ Enemy.prototype.update = function(dt) {
 let score = 0;
 function enemyScore(){
     score++
-    console.log('sea creatures:' + score);
+    scoreText.innerHTML = "Sea Animals: " + score;
+
 }
 
 Enemy.prototype.render = function() {
@@ -83,7 +84,7 @@ Player.prototype.update = function(dt) {
 let boatTouch = 0;
 function diverScore(){
     boatTouch++
-    console.log('diver:' + boatTouch);
+    diverCount.innerHTML = "Diver: " + boatTouch;
 }
 
 Player.prototype.render = function() {

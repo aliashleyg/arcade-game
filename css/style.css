@@ -8,6 +8,10 @@ h1 {
   margin-bottom: -100px;
 }
 
+p {
+  font-size: 2em;
+}
+
 #boat {
 	/*z-index: 1;*/
 	position: relative;
