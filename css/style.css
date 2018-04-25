@@ -1,3 +1,46 @@
+* {
+  color: #2B6199;
+  font-family: 'Black Han Sans', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: -100px;
+}
+
+#boat {
+	/*z-index: 1;*/
+	position: relative;
+	max-width: 180px;
+	top:105px;
+	right:-50%;
+	;
+}
+
 body {
     text-align: center;
+}
+
+@keyframes rock {
+    from {
+    	transform:rotate(3deg);
+    }
+    to {
+    	transform:rotate(-3deg);
+    }
+}
+
+ /*The element to apply the animation to */
+#boat {
+	animation-iteration-count: infinite;
+    animation-name: rock;
+    animation-duration: 4s;
+    animation-direction: alternate-reverse;
+    transition-timing-function: ease-out;
+}
+
+@media (min-width:992px) {
+  #boat {
+  	right: -53%;
+  }
 }

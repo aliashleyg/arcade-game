@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+
 var Enemy = function(latitude, src, speedInterval, len) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -17,9 +18,9 @@ var Enemy = function(latitude, src, speedInterval, len) {
     this.length = len;
 };
 
-var enemyOne = new Enemy(60,'images/shark.png', (600 - 500), 161);
-var enemyTwo = new Enemy(142, 'images/narwhal.png', (650 - 500), 237);
-var enemyThree = new Enemy(224, 'images/anglerfish.png', (625 - 500), 76);
+var enemyOne = new Enemy(80,'images/shark.png', (600 - 500), 161);
+var enemyTwo = new Enemy(162, 'images/narwhal.png', (650 - 500), 237);
+var enemyThree = new Enemy(244, 'images/anglerfish.png', (625 - 500), 76);
 
 
 // Update the enemy's position, required method for game
@@ -36,18 +37,10 @@ Enemy.prototype.update = function(dt) {
         player.x + 100 > this.x &&
         player.y < this.y + 65 &&
         player.y + 65 > this.y) {
-        player.x = 0;
-        player.y = 450;
+        player.x = 200;
+        player.y = 470;
         tallyScore();
     }
-
-// if (player.x < this.x + this.len &&
-//     player.x + 84 > this.x &&
-//     player.y < this.y + this.height &&
-//     101 + player.y > this.y) {
-//     player.x = 0;
-//     player.y = 450;
-// }
 
 };
 
@@ -70,21 +63,15 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
     this.sprite = 'images/girl.png';
-    this.x = 0;
-    this.y = 450;
+    this.x = 200;
+    this.y = 485;
 };
 
 Player.prototype.update = function(dt) {
-    /*FOR MY VERSION*/
-    if(this.x > 380 && this.y < 60) {
-        this.x = 0;
-        this.y = 450;
+       if (this.y < 80 && this.x > 300) {
+        this.x = 200;
+        this.y = 485;
     }
-    /*FOR BUG VERSION */
-    // if (this.y < 60) {
-    //     this.x = 0;
-    //     this.y = 405;
-    // }
 };
 
 Player.prototype.render = function() {
@@ -118,7 +105,7 @@ Player.prototype.handleInput = function(key) {
         this.x = this.x + 100;
     }
 
-    if (key == 'up' && this.y > 60) {
+    if (key == 'up' && this.y > 80) {
         this.y = this.y - 100;
     }
 
@@ -129,20 +116,4 @@ Player.prototype.handleInput = function(key) {
 }
 
 
-// var Boat = function(latitude, src, speedInterval, len) {
-//     // Variables applied to each of our instances go here,
-//     // we've provided one for you to get started
 
-//     // The image/sprite for our enemies, this uses
-//     // a helper we've provided to easily load images
-    
-//     //TODOS:
-
-//     //1. set a width and height that is allowable for the bug to move in (three defined rows)
-//     //2. set a random speed for each bug, but make sure that they are all in separate rows. 
-//     this.speed = Math.round(Math.random() * speedInterval) + 500;
-//     this.x;
-//     this.y = latitude; //function here to set math.random speed;
-//     this.sprite = src;
-//     this.length = len;
-// };
