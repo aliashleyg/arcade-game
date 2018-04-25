@@ -1,5 +1,4 @@
 // Enemies our player must avoid
-
 var Enemy = function(latitude, src, speedInterval, len) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
@@ -39,19 +38,16 @@ Enemy.prototype.update = function(dt) {
         player.y + 65 > this.y) {
         player.x = 200;
         player.y = 470;
-        tallyScore();
+        enemyScore();
     }
+
 
 };
 
 let score = 0;
-function tallyScore(){
-    if (score < 2) {
-        console.log ('keep playing');
-        score ++;
-    } else {
-        console.log('end game?');
-    }
+function enemyScore(){
+    score++
+    console.log('sea creatures:' + score);
 }
 
 Enemy.prototype.render = function() {
@@ -71,8 +67,15 @@ Player.prototype.update = function(dt) {
        if (this.y < 80 && this.x > 300) {
         this.x = 200;
         this.y = 485;
+        diverScore();
     }
 };
+
+let boatTouch = 0;
+function diverScore(){
+    boatTouch++
+    console.log('diver:' + boatTouch);
+}
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
