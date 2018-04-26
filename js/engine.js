@@ -244,6 +244,8 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+
+    
 })(this);
 
 //function to append score tally below canvas

@@ -1,22 +1,19 @@
+/******
+ TODOS
+******/
 //fix chosen character becoming this.sprite
 //stop canvas functionality during open modal
-
-
-
-
-
-
-
 
 var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
 const modal = $('#chooseChar');
 var divers = ['images/boy.png', 'images/girl.png'];
 var timer;
-var counter = 60;
-// const endGameModal = $('#endGame');
+var counter = 60; 
 
-
+/*******************************
+ GAME START MODAL FUNCTIONALITY
+********************************/
 function chooseChar() {
     setTimeout(function() {
       $('#chooseChar').modal({ 
@@ -34,9 +31,9 @@ let character = function() {
     });
 }
 
-/*************************************************
- GAME TIMER FUNCTION
-*************************************************/
+/************************
+ GAME TIMER FUNCTIONALITY
+*************************/
 function gameTimer() {
     if (!timer){
         timer = setInterval (function () {
@@ -51,6 +48,10 @@ function gameTimer() {
     }
     return counter;
 }
+
+/*******************************
+ GAME END MODAL FUNCTIONALITY
+********************************/
 
 function endGame() {
     var message = document.querySelector('#endGameMessage');
@@ -70,6 +71,10 @@ function endGame() {
 replay();
 }
 
+/*******************************
+ REPLAY/GAME RESET FUNCTIONALITY
+********************************/
+
 function replay() {
     const replayBtn = $('#replayBtn');
     $(replayBtn).on('click', function() {
@@ -82,21 +87,17 @@ function replay() {
     });
 }
 
-
 chooseChar();
 character();
 
-// Enemies our player must avoid
-var Enemy = function(latitude, src, speedInterval, len) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+/*******************************
+         SEA CREATURES
+********************************/
 
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    
-    this.speed = Math.round(Math.random() * speedInterval) + 400;
+var Enemy = function(latitude, src, speedInterval, len) {
+  this.speed = Math.round(Math.random() * speedInterval) + 400;
     this.x;
-    this.y = latitude; //function here to set math.random speed;
+    this.y = latitude; 
     this.sprite = src;
     this.length = len;
 };
@@ -106,8 +107,6 @@ var enemyTwo = new Enemy(162, 'images/narwhal.png', (650 - 500), 237);
 var enemyThree = new Enemy(244, 'images/anglerfish.png', (625 - 500), 76);
 
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     if (this.x < 600) {
         this.x = this.x + this.speed * dt;
@@ -125,45 +124,39 @@ Enemy.prototype.update = function(dt) {
         snack.play();
         enemyScore();
     }
-
-
 };
 
 let score = 0;
 function enemyScore(){
-    score++
+    score++;
     scoreText.innerHTML = "Sea Animals: " + score;
-
 }
 
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+/*******************************
+             DIVER
+********************************/
+
 var Player = function(character) {
     this.sprite = 'images/boy.png';
     this.x = 200;
     this.y = 485;
-    console.log(this.sprite);
+
 };
 
-//player touches boat; gets a point
 Player.prototype.update = function(dt) {
        if (this.x >= 300 && this.y < 0) {
-
         this.x = 200;
         this.y = 485;
         reachedBoat.play();
         diverScore();
-
     }
 };
-var boatTouch = document.createElement('span');
-boatTouch.id ='boatTouch';
-boatTouch = 0;
+var boatTouch = 0;
+
 function diverScore(){
     boatTouch++;
     diverCount.innerHTML = "Diver: " + boatTouch + "<br />";
@@ -172,14 +165,18 @@ function diverScore(){
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
-// Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
-// Place the player object in a variable called player
+
+/*******************************
+ OBJECT INSTANTIATION
+********************************/
+
 let allEnemies = [enemyOne, enemyTwo, enemyThree];
 let player = new Player;
 
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+/*******************************
+ DIVER MOBILITY FUNCTIONALITY
+********************************/
+
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
