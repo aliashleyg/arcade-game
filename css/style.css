@@ -21,6 +21,17 @@ p {
 	;
 }
 
+.diver {
+  margin: 10px;
+  max-width: 150%;
+  border: 5px solid transparent;
+}
+
+.diver:hover {
+  border-radius: 5px;
+  border: 5px solid #cccccc;
+}
+
 body {
     text-align: center;
 }

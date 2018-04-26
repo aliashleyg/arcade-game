@@ -1,6 +1,32 @@
 //sound effects
 var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
+//modal functionality
+const modal = $('#chooseChar');
+
+function chooseChar() {
+    setTimeout(function() {
+      $('#chooseChar').modal('show');
+    }, 500);
+  };
+
+// let character = function() {
+//     let diver = $('.diver');
+//     $(diver).on('click', function() {
+//         $('#chooseChar').modal('hide');
+//         if (this.id ==="girl") {
+//             character = 'images/girl.png';
+//         } else {
+//             character = 'images/boy.png';
+//         }
+//         return character;
+//     });
+// }
+
+
+chooseChar();
+
+
 
 // Enemies our player must avoid
 var Enemy = function(latitude, src, speedInterval, len) {
@@ -64,9 +90,20 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    this.sprite = 'images/girl.png';
+    this.sprite = function() {
+    let diver = $('.diver');
+    $(diver).on('click', function() {
+        $('#chooseChar').modal('hide');
+        if (this.id ==="girl") {
+            this.sprite = 'images/girl.png';
+        } else {
+            this.sprite = 'images/boy.png';
+        }
+    });
+};
     this.x = 200;
     this.y = 485;
+    console.log(this.sprite);
 };
 
 //player touches boat; gets a point

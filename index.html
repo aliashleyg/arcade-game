@@ -5,15 +5,54 @@
     <title>Back to the Boat!</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 
 
 
 </head>
 <body>
-	<h1>Back to the boat!</h1>
-<div id="boat"><img src="images/boat.png"></div>    
+	<div class="container">
+		<div class="row">
+			<h1>Back to the boat!</h1>
+			<div id="boat"><img src="images/boat.png"></div> 
+
+			<!-- Modal -->
+	        <div class="modal fade" id="chooseChar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	        	<div class="modal-dialog" role="document">
+	        		<div class="modal-content">
+	        			
+	        			<div class="modal-header">
+	        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                  			<span aria-hidden="true">&times;</span>
+	                		</button>
+	                		<h2>Can you get back to the boat?</h2>
+	                	</div><!--end modal header-->
+	                	
+	                	<div class="modal-body">
+	                		<h3>select your character:</h3>
+	                		<img class="diver" id ="girl" src="images/girl.png">
+	                		<img class="diver" id ="boy" src="images/boy.png">
+	               		</div><!--end modal body-->
+	               		
+	               		<div class="modal-footer">
+	               		</div><!--end modal footer-->
+					
+					</div><!--end modal content-->
+	        	</div><!--end modal dialogue-->
+	        </div><!--end modal-->	
+		</div> <!--end row-->
+	</div><!--end container-->
+
+
 	<!--scripts -->
-	<script src="js/resources.js"></script>
+    <script
+	  src="https://code.jquery.com/jquery-2.2.4.min.js"
+	  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	  crossorigin="anonymous"></script>
+ 	<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
