@@ -12,6 +12,14 @@ p {
   font-size: 2em;
 }
 
+li {
+  list-style-type: none;
+}
+
+#row {
+  height: 120px;
+}
+
 #boat {
 	/*z-index: 1;*/
 	position: relative;

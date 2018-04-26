@@ -1,8 +1,21 @@
+//fix chosen character becoming this.sprite
+//fix clock starting on load when it should start once the character is chosen
+//add a closing modal with a game summary, and an option to play again
+
+
+
+
+
+
+
+
 //sound effects
 var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
 //modal functionality
 const modal = $('#chooseChar');
+var divers = ['images/boy.png', 'images/girl.png'];
+
 
 function chooseChar() {
     setTimeout(function() {
@@ -10,22 +23,26 @@ function chooseChar() {
     }, 500);
   };
 
-// let character = function() {
-//     let diver = $('.diver');
-//     $(diver).on('click', function() {
-//         $('#chooseChar').modal('hide');
-//         if (this.id ==="girl") {
-//             character = 'images/girl.png';
-//         } else {
-//             character = 'images/boy.png';
-//         }
-//         return character;
-//     });
-// }
+let character = function() {
+    let diver = $('.diver');
+    $(diver).on('click', function() {
+        $('#chooseChar').modal('hide');
+        timer();    
+    });
+}
 
+var countdown = 60;
+var clock = setInterval(timer, 1000);
+function timer() {
+    countdown = countdown - 1;
+    if (countdown <= 0) {
+        clearInterval(clock);
+    }
+    document.querySelector('#timer').innerHTML = countdown + " seconds";
+}
 
 chooseChar();
-
+character();
 
 
 // Enemies our player must avoid
@@ -36,11 +53,7 @@ var Enemy = function(latitude, src, speedInterval, len) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     
-    //TODOS:
-
-    //1. set a width and height that is allowable for the bug to move in (three defined rows)
-    //2. set a random speed for each bug, but make sure that they are all in separate rows. 
-    this.speed = Math.round(Math.random() * speedInterval) + 500;
+    this.speed = Math.round(Math.random() * speedInterval) + 300;
     this.x;
     this.y = latitude; //function here to set math.random speed;
     this.sprite = src;
@@ -89,18 +102,8 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function() {
-    this.sprite = function() {
-    let diver = $('.diver');
-    $(diver).on('click', function() {
-        $('#chooseChar').modal('hide');
-        if (this.id ==="girl") {
-            this.sprite = 'images/girl.png';
-        } else {
-            this.sprite = 'images/boy.png';
-        }
-    });
-};
+var Player = function(character) {
+    this.sprite = 'images/boy.png';
     this.x = 200;
     this.y = 485;
     console.log(this.sprite);
@@ -120,7 +123,7 @@ Player.prototype.update = function(dt) {
 
 let boatTouch = 0;
 function diverScore(){
-    boatTouch++
+    boatTouch++;
     diverCount.innerHTML = "Diver: " + boatTouch;
 }
 
