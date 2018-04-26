@@ -250,10 +250,10 @@ var Engine = (function(global) {
 var scoreCard = document.createElement('div');
 scoreCard.id ='scoreTracker';
 document.body.appendChild(scoreCard);
-var diverCount = document.createElement('p');
+var diverCount = document.createElement('span');
 scoreCard.appendChild(diverCount);
-diverCount.innerHTML = "Diver: " + boatTouch;
-var scoreText = document.createElement('p');
+diverCount.innerHTML = "Diver: " + boatTouch + "<br />";
+var scoreText = document.createElement('span');
 scoreTracker.appendChild(scoreText)
 scoreText.innerHTML = "Sea Animals: " + score;
 

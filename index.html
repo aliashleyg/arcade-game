@@ -16,11 +16,12 @@
 	<div class="container">
 		<div class="row">
 			<h1>Back to the boat!</h1>
-			<div id ="timer" style="font-size:2em"></div>
+			<div id ="timer" style="font-size:2em">timer</div>
 			<div id="boat"><img src="images/boat.png"></div>
+		</div> <!--end row-->
 
-			<!-- Modal -->
-	        <div class="modal fade" id="chooseChar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+			<!-- Game Start Modal -->
+	        <div class="modal fade out" id="chooseChar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
 	        	<div class="modal-dialog" role="document">
 	        		<div class="modal-content">
 	        			
@@ -32,9 +33,11 @@
 	                	</div><!--end modal header-->
 	                	
 	                	<div class="modal-body">
-	                		<h3>select your character:</h3>
-	                		<img class="diver" id ="girl" src="images/girl.png">
-	                		<img class="diver" id ="boy" src="images/boy.png">
+	                		<h2>select your character:</h2>
+	                		<div class="diver">
+		                		<img id ="girl" src="images/girl.png">
+		                		<img id ="boy" src="images/boy.png">
+	                		</div>
 	                		<h2>How to Play:</h2>
 	               			<ul>
 	               				<li>Choose your diver.</li>
@@ -45,13 +48,41 @@
 	               		</div><!--end modal body-->
 	               		
 	               		<div class="modal-footer">
-	               			
 	               		</div><!--end modal footer-->
 					
 					</div><!--end modal content-->
 	        	</div><!--end modal dialogue-->
 	        </div><!--end modal-->	
-		</div> <!--end row-->
+
+	        <!-- Game End Modal -->
+	        <div class="modal fade in out" id="gameOver" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	        	<div class="modal-dialog" role="document">
+	        		<div class="modal-content">
+	        			
+	        			<div class="modal-header">
+	        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	                  			<span aria-hidden="true">&times;</span>
+	                		</button>
+	                		<h2>How did you fare, seafarer?</h2>
+	                	</div><!--end modal header-->
+	                	
+	                	<div class="modal-body">
+	                		<h3>final stats:</h3>
+	                		<div class="scores">
+	                			<span class="gameOverMessage" id="winOrLoseMessage"></span><br /><br />
+	                			<span class="gameOverMessage" id="endGameMessage"></span>
+	   
+	                			
+	                		</div>
+	               		</div><!--end modal body-->
+	               		
+	               		<div class="modal-footer" style="text-align: center">
+	               			<button id="replayBtn">play again?</button>
+	               		</div><!--end modal footer-->
+					
+					</div><!--end modal content-->
+	        	</div><!--end modal dialogue-->
+	        </div><!--end modal-->	
 	</div><!--end container-->
 
 

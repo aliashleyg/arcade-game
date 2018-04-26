@@ -3,21 +3,30 @@
   font-family: 'Black Han Sans', sans-serif;
 }
 
+body {
+    text-align: center;
+}
+
 h1 {
   font-size: 3em;
   margin-bottom: -100px;
 }
 
 p {
-  font-size: 2em;
+  font-size: 1em;
+}
+
+ul {
+  padding-left: 0px;
 }
 
 li {
   list-style-type: none;
+  font-size: 1.2em;
 }
 
 #row {
-  height: 120px;
+  height: 120px !important;
 }
 
 #boat {
@@ -29,20 +38,30 @@ li {
 	;
 }
 
-.diver {
+#scoreTracker {
+  font-size: 1.3em;
+}
+.modal-backdrop {
+  background-color: #2B6199 !important;
+  opacity: 1 !important;
+}
+
+#girl, #boy {
   margin: 10px;
   max-width: 150%;
   border: 5px solid transparent;
 }
 
-.diver:hover {
+#girl:hover, #boy:hover {
   border-radius: 5px;
   border: 5px solid #cccccc;
 }
 
-body {
-    text-align: center;
+.gameOverMessage {
+  font-size: 1.3em;
+  color: #ca5153;
 }
+
 
 @keyframes rock {
     from {

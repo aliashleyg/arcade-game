@@ -1,6 +1,5 @@
 //fix chosen character becoming this.sprite
-//fix clock starting on load when it should start once the character is chosen
-//add a closing modal with a game summary, and an option to play again
+//stop canvas functionality during open modal
 
 
 
@@ -9,17 +8,21 @@
 
 
 
-//sound effects
 var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
-//modal functionality
 const modal = $('#chooseChar');
 var divers = ['images/boy.png', 'images/girl.png'];
+var timer;
+var counter = 60;
+// const endGameModal = $('#endGame');
 
 
 function chooseChar() {
     setTimeout(function() {
-      $('#chooseChar').modal('show');
+      $('#chooseChar').modal({ 
+            backdrop: 'static', 
+            keyboard: false,
+            'show': true});
     }, 500);
   };
 
@@ -27,23 +30,61 @@ let character = function() {
     let diver = $('.diver');
     $(diver).on('click', function() {
         $('#chooseChar').modal('hide');
-        timer();    
+        gameTimer();    
     });
 }
 
-var countdown = 60;
-var clock = setInterval(timer, 1000);
-function timer() {
-    countdown = countdown - 1;
-    if (countdown <= 0) {
-        clearInterval(clock);
+/*************************************************
+ GAME TIMER FUNCTION
+*************************************************/
+function gameTimer() {
+    if (!timer){
+        timer = setInterval (function () {
+            if (counter != 50) {
+                counter--;
+                document.querySelector('#timer').innerHTML = counter + " seconds";
+
+            } else {
+                endGame();                
+            }
+        }, 1000);
     }
-    document.querySelector('#timer').innerHTML = countdown + " seconds";
+    return counter;
 }
+
+function endGame() {
+    var message = document.querySelector('#endGameMessage');
+    var didYouWinMessage = document.querySelector('#winOrLoseMessage');
+    $('#gameOver').modal({
+            backdrop: 'static', 
+            keyboard: true,
+            'show': true});
+        if (boatTouch > score) {
+            didYouWinMessage.textContent = "Congratulations, Diver! You earned your open water certification!";
+        } else if  (score > boatTouch) {
+            didYouWinMessage.textContent = "We need to rush you to hospital for all of those injuries!";
+        } else {
+            didYouWinMessage.textContent = "It looks like you have met your match with the sea creatures, as you had a tied score!";
+        }
+     message.innerHTML = "Successful Boat Trips: " + boatTouch + "<br />" + "Animal Bites: " + score;
+replay();
+}
+
+function replay() {
+    const replayBtn = $('#replayBtn');
+    $(replayBtn).on('click', function() {
+        counter = 60;
+        boatTouch = 0;
+        score = 0;
+        diverCount.innerHTML = "Diver: " + boatTouch + "<br />";
+        scoreText.innerHTML = "Sea Animals: " + score;
+        $('#gameOver').modal('hide');
+    });
+}
+
 
 chooseChar();
 character();
-
 
 // Enemies our player must avoid
 var Enemy = function(latitude, src, speedInterval, len) {
@@ -53,7 +94,7 @@ var Enemy = function(latitude, src, speedInterval, len) {
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     
-    this.speed = Math.round(Math.random() * speedInterval) + 300;
+    this.speed = Math.round(Math.random() * speedInterval) + 400;
     this.x;
     this.y = latitude; //function here to set math.random speed;
     this.sprite = src;
@@ -120,11 +161,12 @@ Player.prototype.update = function(dt) {
 
     }
 };
-
-let boatTouch = 0;
+var boatTouch = document.createElement('span');
+boatTouch.id ='boatTouch';
+boatTouch = 0;
 function diverScore(){
     boatTouch++;
-    diverCount.innerHTML = "Diver: " + boatTouch;
+    diverCount.innerHTML = "Diver: " + boatTouch + "<br />";
 }
 
 Player.prototype.render = function() {
@@ -145,7 +187,6 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
-
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
