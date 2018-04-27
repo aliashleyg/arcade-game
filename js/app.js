@@ -94,10 +94,11 @@ character();
 * @constructor
 * @param {number} latitude - The y value assigned to the sea creature
 * @param {string} src - the image source
+@param {number} speedInterval - the speed of each enemy
 * @param {number} len - the width of the image used to configure the collision occurences
 ********************************/
 
-var Enemy = function(latitude, src, len) {
+var Enemy = function(latitude, src, speedInterval, len) {
   this.speed = Math.round(Math.random() * speedInterval) + 400;
     this.x;
     this.y = latitude;
