@@ -124,7 +124,7 @@ Enemy.prototype.update = function(dt) {
         player.y < this.y + 65 &&
         player.y + 65 > this.y) {
         player.x = 200;
-        player.y = 470;
+        player.y = 485;
         snack.play();
         enemyScore();
     }
