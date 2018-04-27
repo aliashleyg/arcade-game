@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Back to the Boat!</title>
@@ -7,36 +7,33 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Black+Han+Sans" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-
-
 </head>
+
 <body>
 	<div class="container">
 		<div class="row">
 			<h1>Back to the boat!</h1>
 			<div id ="timer" style="font-size:2em">timer</div>
-			<div id="boat"><img src="images/boat.png"></div>
+			<div id="boat"><img src="images/boat.png" alt="boat"></div>
 		</div> <!--end row-->
 
 			<!-- Game Start Modal -->
-	        <div class="modal fade out" id="chooseChar" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	        <div class="modal fade out" id="chooseChar" tabindex="-1" role="dialog" aria-labelledby="chooseChar" aria-hidden="true">
 	        	<div class="modal-dialog" role="document">
 	        		<div class="modal-content">
-	        			
+
 	        			<div class="modal-header">
 	        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                  			<span aria-hidden="true">&times;</span>
 	                		</button>
 	                		<h2>Can you get back to the boat?</h2>
 	                	</div><!--end modal header-->
-	                	
+
 	                	<div class="modal-body">
 	                		<h2>select your character:</h2>
 	                		<div class="diver">
-		                		<img id ="girl" src="images/girl.png">
-		                		<img id ="boy" src="images/boy.png">
+		                		<img id ="girl" src="images/girl.png" alt="girl diver">
+		                		<img id ="boy" src="images/boy.png" alt="boy diver">
 	                		</div>
 	                		<h2>How to Play:</h2>
 	               			<ul>
@@ -46,43 +43,43 @@
 	               				<li>Complete this swim to the boat as many times as you can without getting attacked by the sea creatures in one minute.</li>
 	               			</ul>
 	               		</div><!--end modal body-->
-	               		
+
 	               		<div class="modal-footer">
 	               		</div><!--end modal footer-->
-					
+
 					</div><!--end modal content-->
 	        	</div><!--end modal dialogue-->
-	        </div><!--end modal-->	
+	        </div><!--end modal-->
 
 	        <!-- Game End Modal -->
-	        <div class="modal fade in out" id="gameOver" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
+	        <div class="modal fade in out" id="gameOver" tabindex="-1" role="dialog" aria-labelledby="gameOver" aria-hidden="true">
 	        	<div class="modal-dialog" role="document">
 	        		<div class="modal-content">
-	        			
+
 	        			<div class="modal-header">
 	        				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	                  			<span aria-hidden="true">&times;</span>
 	                		</button>
 	                		<h2>How did you fare, seafarer?</h2>
 	                	</div><!--end modal header-->
-	                	
+
 	                	<div class="modal-body">
 	                		<h3>final stats:</h3>
 	                		<div class="scores">
 	                			<span class="gameOverMessage" id="winOrLoseMessage"></span><br /><br />
 	                			<span class="gameOverMessage" id="endGameMessage"></span>
-	   
-	                			
+
+
 	                		</div>
 	               		</div><!--end modal body-->
-	               		
+
 	               		<div class="modal-footer" style="text-align: center">
 	               			<button id="replayBtn">play again?</button>
 	               		</div><!--end modal footer-->
-					
+
 					</div><!--end modal content-->
 	        	</div><!--end modal dialogue-->
-	        </div><!--end modal-->	
+	        </div><!--end modal-->
 	</div><!--end container-->
 
 

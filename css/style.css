@@ -35,7 +35,6 @@ li {
 	max-width: 180px;
 	top:105px;
 	right:-55%;
-	;
 }
 
 #scoreTracker {
@@ -72,7 +71,6 @@ li {
     }
 }
 
- /*The element to apply the animation to */
 #boat {
 	animation-iteration-count: infinite;
     animation-name: rock;

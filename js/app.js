@@ -8,15 +8,15 @@ var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
 const modal = $('#chooseChar');
 var timer;
-var counter = 60; 
+var counter = 60;
 
 /*******************************
  GAME START MODAL FUNCTIONALITY
 ********************************/
 function chooseChar() {
     setTimeout(function() {
-      $('#chooseChar').modal({ 
-            backdrop: 'static', 
+      $('#chooseChar').modal({
+            backdrop: 'static',
             keyboard: false,
             'show': true});
     }, 500);
@@ -25,9 +25,8 @@ function chooseChar() {
 let character = function() {
     let diver = $('.diver');
     $(diver).on('click', function() {
-        // setChar();
         gameTimer();
-    $('#chooseChar').modal('hide'); 
+    $('#chooseChar').modal('hide');
     });
 }
 
@@ -40,9 +39,8 @@ function gameTimer() {
             if (counter != 0) {
                 counter--;
                 document.querySelector('#timer').innerHTML = counter + " seconds";
-
             } else {
-                endGame();                
+                endGame();
             }
         }, 1000);
     }
@@ -57,7 +55,7 @@ function endGame() {
     var message = document.querySelector('#endGameMessage');
     var didYouWinMessage = document.querySelector('#winOrLoseMessage');
     $('#gameOver').modal({
-            backdrop: 'static', 
+            backdrop: 'static',
             keyboard: true,
             'show': true});
         if (boatTouch > score) {
@@ -92,12 +90,17 @@ character();
 
 /*******************************
          SEA CREATURES
+* @description creates the sea creatures that the diver has to avoid
+* @constructor
+* @param {number} latitude - The y value assigned to the sea creature
+* @param {string} src - the image source
+* @param {number} len - the width of the image used to configure the collision occurences
 ********************************/
 
-var Enemy = function(latitude, src, speedInterval, len) {
+var Enemy = function(latitude, src, len) {
   this.speed = Math.round(Math.random() * speedInterval) + 400;
     this.x;
-    this.y = latitude; 
+    this.y = latitude;
     this.sprite = src;
     this.length = len;
 };
@@ -113,7 +116,7 @@ Enemy.prototype.update = function(dt) {
 
     } else {
         this.x = -120;
-    }   
+    }
 
     if (player.x < this.x + this.length &&
         player.x + 100 > this.x &&
@@ -138,20 +141,13 @@ Enemy.prototype.render = function() {
 
 /*******************************
              DIVER
+* @description creates the diver
+* @constructor
 ********************************/
-var girl = $('#girl');
-var boy = $('#boy');
-
-// function setChar() {
-//     if
-// };
-
-
-var Player = function(character) {
+var Player = function() {
     this.sprite = 'images/boy.png';
     this.x = 200;
     this.y = 485;
-
 };
 
 Player.prototype.update = function(dt) {
@@ -197,7 +193,7 @@ document.addEventListener('keyup', function(e) {
 Player.prototype.handleInput = function(key) {
     if (key == 'left' && this.x > 0) {
         this.x = this.x - 100;
-    } 
+    }
 
     if (key == 'right' && this.x < 400) {
         this.x = this.x + 100;
@@ -210,8 +206,7 @@ Player.prototype.handleInput = function(key) {
     if (key == 'down' && this.y < 405) {
         this.y = this.y + 98;
     }
-   
-}
+};
 
 
 
