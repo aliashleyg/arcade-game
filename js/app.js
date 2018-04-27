@@ -37,7 +37,7 @@ let character = function() {
 function gameTimer() {
     if (!timer){
         timer = setInterval (function () {
-            if (counter != 50) {
+            if (counter != 0) {
                 counter--;
                 document.querySelector('#timer').innerHTML = counter + " seconds";
 
