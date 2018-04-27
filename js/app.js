@@ -74,7 +74,7 @@ replay();
 ********************************/
 
 function replay() {
-    const replayBtn = $('#replayBtn');
+    const replayBtn = $('.replayBtn');
     $(replayBtn).on('click', function() {
         counter = 60;
         boatTouch = 0;
@@ -146,7 +146,7 @@ Enemy.prototype.render = function() {
 * @constructor
 ********************************/
 var Player = function() {
-    this.sprite = 'images/boy.png';
+    this.sprite = 'images/girl.png';
     this.x = 200;
     this.y = 485;
 };

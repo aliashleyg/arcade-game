@@ -249,7 +249,9 @@ var Engine = (function(global) {
 })(this);
 
 //function to append score tally below canvas
-
+var scoreCard = document.createElement('div');
+scoreCard.id ='scoreTracker';
+document.body.appendChild(scoreCard);
 var diverCount = document.createElement('span');
 scoreCard.appendChild(diverCount);
 diverCount.innerHTML = "Diver: " + boatTouch + "<br />";
