@@ -3,7 +3,7 @@ This is a classic arcade game, built from the premise of "Frogger."
 
 ## Getting Started/Installation Information
 **No special software is needed to play the game.**
-[Click here to play the game.](https://aliashleyg.github.io/v3)
+[Click here to play the game.](https://aliashleyg.github.io/arcade-game-final)
 
 ## Game Play Instructions:
 * Choose your diver.
