@@ -43,7 +43,7 @@ li {
 }
 .modal-backdrop {
   background-color: #2B6199 !important;
-  opacity: 1 !important;
+  opacity: .6 !important;
 }
 
 #girl, #boy {

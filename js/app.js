@@ -7,7 +7,6 @@
 var snack = new Audio('sounds/bite.wav');
 var reachedBoat = new Audio('sounds/bell.wav');
 const modal = $('#chooseChar');
-var divers = ['images/boy.png', 'images/girl.png'];
 var timer;
 var counter = 60; 
 
@@ -26,8 +25,9 @@ function chooseChar() {
 let character = function() {
     let diver = $('.diver');
     $(diver).on('click', function() {
-        $('#chooseChar').modal('hide');
-        gameTimer();    
+        // setChar();
+        gameTimer();
+    $('#chooseChar').modal('hide'); 
     });
 }
 
@@ -139,6 +139,13 @@ Enemy.prototype.render = function() {
 /*******************************
              DIVER
 ********************************/
+var girl = $('#girl');
+var boy = $('#boy');
+
+// function setChar() {
+//     if
+// };
+
 
 var Player = function(character) {
     this.sprite = 'images/boy.png';
